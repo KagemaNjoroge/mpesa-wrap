@@ -1,0 +1,11 @@
+[project]
+name = "fastapi-tutorial"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi[standard]>=0.128.0",
+    "pdfplumber>=0.11.9",
+    "sqlmodel>=0.0.31",
+]
