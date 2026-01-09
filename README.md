@@ -60,7 +60,7 @@ All presented in a swipeable, visual story format — just like Spotify Wrapped!
 ## Run It Locally
 1. Clone the repo
 ```bash
-git clone https://github.com/kagemanjoroge/mpesa-wrapped
+git clone https://github.com/KagemaNjoroge/mpesa-wrap.git
 ```
 
 2. **Run the Backend (API):**
