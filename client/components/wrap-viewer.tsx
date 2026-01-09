@@ -70,7 +70,7 @@ export function WrapViewer({ data }: WrapViewerProps) {
 
   return (
     <div className="relative w-full h-screen bg-gradient-to-br from-green-50 via-white to-green-50 dark:from-green-950/20 dark:via-black dark:to-green-950/20 overflow-hidden">
-      {/* Slide Content */}
+      {/* content */}
       <div 
         className={`w-full h-full transition-all duration-500 ${
           direction === 'forward' ? 'animate-slide-in-right' : 'animate-slide-in-left'
@@ -80,7 +80,7 @@ export function WrapViewer({ data }: WrapViewerProps) {
         <CurrentSlideComponent data={data} />
       </div>
 
-      {/* Navigation Buttons */}
+      {/* nav btns */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center space-x-4">
         <button
           onClick={prevSlide}
@@ -91,7 +91,7 @@ export function WrapViewer({ data }: WrapViewerProps) {
           <ChevronLeft className="w-6 h-6 text-gray-900 dark:text-white" />
         </button>
 
-        {/* Progress Dots */}
+        {/* prog dots */}
         <div className="flex items-center space-x-2">
           {slides.map((_, index) => (
             <button
@@ -117,12 +117,12 @@ export function WrapViewer({ data }: WrapViewerProps) {
         </button>
       </div>
 
-      {/* Slide Counter */}
+      {/* counter */}
       <div className="absolute top-8 right-8 text-sm font-medium text-gray-500 dark:text-gray-400">
         {currentSlide + 1} / {slides.length}
       </div>
 
-      {/* Keyboard Navigation Hint */}
+      {/* keyboard nav hint */}
       <div className="absolute top-8 left-8 text-xs text-gray-400 dark:text-gray-600">
         Use ← → keys to navigate
       </div>

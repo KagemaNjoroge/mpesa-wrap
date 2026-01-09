@@ -1,7 +1,7 @@
 "use client";
 
 import { ParsedStatement } from "@/lib/api";
-import { ArrowRight, TrendingUp, TrendingDown, Users, Clock, Calendar } from "lucide-react";
+import { TrendingUp, TrendingDown, Users, Clock, Calendar, Heart, Gift, Sunrise, Sun, Sunset, Moon, Check } from "lucide-react";
 
 interface SlideProps {
   data: ParsedStatement;
@@ -159,7 +159,7 @@ export function SoulmatesSlide({ data }: SlideProps) {
               Top Sender
             </p>
             <div className="w-16 h-16 rounded-full bg-green-600 mx-auto flex items-center justify-center">
-              <span className="text-2xl">💚</span>
+              <Heart className="w-8 h-8 text-white fill-white" />
             </div>
             <p className="text-2xl font-bold text-gray-900 dark:text-white">
               {topSender[1].name}
@@ -179,7 +179,7 @@ export function SoulmatesSlide({ data }: SlideProps) {
               Top Receiver
             </p>
             <div className="w-16 h-16 rounded-full bg-blue-600 mx-auto flex items-center justify-center">
-              <span className="text-2xl">🎁</span>
+              <Gift className="w-8 h-8 text-white" />
             </div>
             <p className="text-2xl font-bold text-gray-900 dark:text-white">
               {topReceiver[1].name}
@@ -199,10 +199,10 @@ export function SoulmatesSlide({ data }: SlideProps) {
 
 export function TimeOfDaySlide({ data }: SlideProps) {
   const times = [
-    { name: "Morning", period: "5AM - 12PM", data: data.time_of_day_spending.morning, emoji: "🌅" },
-    { name: "Afternoon", period: "12PM - 5PM", data: data.time_of_day_spending.afternoon, emoji: "☀️" },
-    { name: "Evening", period: "5PM - 9PM", data: data.time_of_day_spending.evening, emoji: "🌆" },
-    { name: "Night", period: "9PM - 5AM", data: data.time_of_day_spending.night, emoji: "🌙" },
+    { name: "Morning", period: "5AM - 12PM", data: data.time_of_day_spending.morning, icon: Sunrise },
+    { name: "Afternoon", period: "12PM - 5PM", data: data.time_of_day_spending.afternoon, icon: Sun },
+    { name: "Evening", period: "5PM - 9PM", data: data.time_of_day_spending.evening, icon: Sunset },
+    { name: "Night", period: "9PM - 5AM", data: data.time_of_day_spending.night, icon: Moon },
   ].sort((a, b) => b.data.amount - a.data.amount);
 
   const topTime = times[0];
@@ -215,7 +215,9 @@ export function TimeOfDaySlide({ data }: SlideProps) {
       </h2>
       
       <div className="space-y-6">
-        <div className="text-6xl animate-bounce">{topTime.emoji}</div>
+        <div className="animate-bounce">
+          <topTime.icon className="w-16 h-16 text-green-600 mx-auto" />
+        </div>
         <div className="space-y-2">
           <p className="text-2xl text-gray-600 dark:text-gray-400">
             You're a <span className="font-bold text-green-600">{topTime.name}</span> spender
@@ -233,13 +235,15 @@ export function TimeOfDaySlide({ data }: SlideProps) {
       </div>
 
       <div className="grid grid-cols-4 gap-4 w-full max-w-2xl mt-8">
-        {times.map((time, idx) => (
+        {times.map((time, idx) => {
+          const TimeIcon = time.icon;
+          return (
           <div 
             key={time.name}
             className="text-center space-y-2 animate-fade-in"
             style={{ animationDelay: `${idx * 100}ms` }}
           >
-            <div className="text-3xl">{time.emoji}</div>
+            <TimeIcon className="w-8 h-8 text-green-600 mx-auto" />
             <p className="text-xs font-semibold text-gray-500 dark:text-gray-400">
               {time.name}
             </p>
@@ -247,7 +251,8 @@ export function TimeOfDaySlide({ data }: SlideProps) {
               {time.data.count}
             </p>
           </div>
-        ))}
+        );
+        })}
       </div>
     </div>
   );
@@ -363,7 +368,7 @@ export function FinalSlide({ data }: SlideProps) {
   return (
     <div className="flex flex-col items-center justify-center h-full text-center space-y-8 p-8">
       <div className="w-20 h-20 rounded-full bg-green-600 flex items-center justify-center animate-bounce">
-        <span className="text-4xl font-bold text-white">✓</span>
+        <Check className="w-10 h-10 text-white" strokeWidth={3} />
       </div>
       
       <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white animate-fade-in">

@@ -146,7 +146,7 @@ export function UploadPage({ onUploadComplete }: UploadPageProps) {
         <p className="text-xs text-center text-gray-500 dark:text-gray-400">
           Your statement is processed securely and never stored on our servers. You can also review the source code on{" "}
           <a
-            href="https://github.com/kagemanjoroge/mpesa-wrapped"
+            href="https://github.com/kagemanjoroge/mpesa-wrap"
             target="_blank"
             rel="noopener noreferrer"
             className="text-green-600 hover:underline"
