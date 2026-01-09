@@ -31,7 +31,7 @@ def parse_statement(
                 if line.startswith("Customer Name:"):
                     customer_name = line.split("Customer Name:")[1].strip()
                
-            # phone number line begins with Mobile Number:
+            # phone number line begins with "Mobile Number:"
                 if line.startswith("Mobile Number:"):
                     phone_number = line.split("Mobile Number:")[1].strip()
                  
