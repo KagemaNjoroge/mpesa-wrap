@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,6 +17,11 @@ export const metadata: Metadata = {
   title: "M-PESA Wrapped - Your Money Story",
   description: "Discover your M-PESA spending patterns and habits",
   authors: [{ name: "Kagema Njoroge", url: "https://github.com/kagemanjoroge" }],
+  openGraph: {
+    title: "M-PESA Wrapped - Your Money Story",
+    description: "Discover your M-PESA spending patterns and habits",
+    url: "https://mpesa-wrapped.vercel.app",
+    siteName: "M-PESA Wrapped",}
 };
 
 export default function RootLayout({
@@ -29,6 +35,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
