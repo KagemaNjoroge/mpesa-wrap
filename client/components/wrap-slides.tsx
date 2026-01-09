@@ -1,7 +1,7 @@
 "use client";
 
 import { ParsedStatement } from "@/lib/api";
-import { TrendingUp, TrendingDown, Users, Clock, Calendar, Heart, Gift, Sunrise, Sun, Sunset, Moon, Check } from "lucide-react";
+import { TrendingUp, TrendingDown, Users, Clock, Calendar, Heart, Gift, Sunrise, Sun, Sunset, Moon, Check, Share2 } from "lucide-react";
 
 interface SlideProps {
   data: ParsedStatement;
@@ -387,12 +387,33 @@ export function FinalSlide({ data }: SlideProps) {
         </p>
       </div>
 
-      <button 
-        onClick={() => window.location.reload()}
-        className="mt-8 px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-full transition-colors animate-fade-in animation-delay-600"
-      >
-        Upload Another Statement
-      </button>
+      <div className="flex flex-col sm:flex-row gap-4 mt-8 animate-fade-in animation-delay-600">
+        <button 
+          onClick={() => window.location.reload()}
+          className="px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-full transition-colors"
+        >
+          Upload Another Statement
+        </button>
+        <button 
+          onClick={() => {
+            const shareData = {
+              title: 'M-PESA Wrapped',
+              text: 'Discover your M-PESA spending story! Check out M-PESA Wrapped 💚',
+              url: window.location.origin,
+            };
+            if (navigator.share) {
+              navigator.share(shareData);
+            } else {
+              navigator.clipboard.writeText(window.location.origin);
+              alert('Link copied to clipboard!');
+            }
+          }}
+          className="px-8 py-4 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 text-green-600 font-semibold rounded-full transition-colors border-2 border-green-600 flex items-center justify-center gap-2"
+        >
+          <Share2 className="w-5 h-5" />
+          Share with Friends
+        </button>
+      </div>
     </div>
   );
 }
