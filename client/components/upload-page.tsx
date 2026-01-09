@@ -51,7 +51,7 @@ export function UploadPage({ onUploadComplete }: UploadPageProps) {
         <div className="text-center space-y-2">
           <div className="flex items-center justify-center mb-4">
             <div className="w-16 h-16 rounded-full flex items-center justify-center">
-              {/* M-PESA Icon */}
+           
               <Image
                 src="/mpesa.png"
                 alt="M-PESA Logo"
