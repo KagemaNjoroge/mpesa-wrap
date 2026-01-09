@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "M-PESA Wrapped - Your Money Story",
   description: "Discover your M-PESA spending patterns and habits",
-  authors: [{ name: "Your Name", url: "https://yourwebsite.com" }],
+  authors: [{ name: "Kagema Njoroge", url: "https://github.com/kagemanjoroge" }],
 };
 
 export default function RootLayout({
