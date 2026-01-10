@@ -1,7 +1,7 @@
 "use client";
 
 import { ParsedStatement } from "@/lib/api";
-import { TrendingUp, TrendingDown, Users, Clock, Calendar, Heart, Gift, Sunrise, Sun, Sunset, Moon, Check, Share2 } from "lucide-react";
+import { TrendingUp, TrendingDown, Users, Clock, Calendar, Heart, Gift, Sunrise, Sun, Sunset, Moon, Check, Share2, Banknote } from "lucide-react";
 
 interface SlideProps {
   data: ParsedStatement;
@@ -192,6 +192,47 @@ export function SoulmatesSlide({ data }: SlideProps) {
             </p>
           </div>
         )}
+      </div>
+    </div>
+  );
+}
+
+export function TransactionCostsSlide({ data }: SlideProps) {
+  const transCost = data.trans_cost || 0;
+  
+  return (
+    <div className="flex flex-col items-center justify-center h-full text-center space-y-4 sm:space-y-8 p-4 sm:p-8 pt-12 sm:pt-16">
+      <div className="relative">
+        <Banknote className="w-12 h-12 sm:w-20 sm:h-20 text-green-600 animate-pulse" />
+        <div className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-red-500 rounded-full flex items-center justify-center">
+          <span className="text-white text-xs font-bold">!</span>
+        </div>
+      </div>
+      
+      <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white animate-fade-in">
+        The Cost of Convenience
+      </h2>
+      
+      <div className="space-y-3 sm:space-y-6 max-w-lg">
+        <p className="text-base sm:text-xl text-gray-600 dark:text-gray-400 animate-fade-in animation-delay-200">
+          You paid Safaricom
+        </p>
+        
+        <div className="animate-slide-up animation-delay-400">
+          <p className="text-4xl sm:text-6xl font-bold text-green-600">
+            KES {transCost.toLocaleString()}
+          </p>
+        </div>
+        
+        <p className="text-base sm:text-xl text-gray-600 dark:text-gray-400 animate-fade-in animation-delay-600">
+          just to move your money around 💸
+        </p>
+      </div>
+      
+      <div className="mt-4 sm:mt-8 p-4 sm:p-6 bg-yellow-50 dark:bg-yellow-950/30 rounded-xl sm:rounded-2xl max-w-md animate-fade-in animation-delay-800">
+        <p className="text-xs sm:text-sm text-yellow-700 dark:text-yellow-400">
+          This includes PayBill charges and money transfer fees from your transactions.
+        </p>
       </div>
     </div>
   );

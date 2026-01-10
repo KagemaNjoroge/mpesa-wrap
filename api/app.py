@@ -207,9 +207,14 @@ def figure_time_of_day(
 def calculate_transaction_costs(
     transactions: list[Transansaction]
 ) -> float:
+    trans_total = 0.00
     # transactions to consider => details containing "Pay Bill Charge", 
+    # or "Customer Transfer of Funds Charge"
     for tx in transactions:
-        pass
+        if "Pay Bill Charge" in tx.details or "Customer Transfer of Funds Charge" in tx.details:
+            trans_total += float(tx.withdrawn)
+    return trans_total
+
 def identify_mpesa_soulmates(
     transactions: list[Transansaction]
 ):
@@ -226,22 +231,28 @@ def identify_mpesa_soulmates(
         # received money transactions
         if "funds received from" in details_lower or "received from" in details_lower:
             try:
-                # "Funds received from - 2547******111 JOHN NGANGA" or similar
+             
                 if " - " in details:
                     sender_info = details.split(" - ", 1)[1].strip()
                     parts = sender_info.split(" ", 1)
-                    sender_phone = parts[0].strip()
-                    sender_name = parts[1].strip() if len(parts) > 1 else sender_phone
+                   
+                    if parts[0] and parts[0][0].isdigit():
+                    
+                        sender_name = parts[1].strip() if len(parts) > 1 else parts[0]
+                    else:
+                     
+                        sender_name = sender_info
                     
                     amount_str = tx.paid_in.replace(",", "").replace("-", "").strip()
                     if amount_str and amount_str != "":
                         amount_received = float(amount_str)
                         
-                        if sender_phone in sender_dict:
-                            sender_dict[sender_phone]["total_amount"] += amount_received
-                            sender_dict[sender_phone]["count"] += 1
+                        # Use full name as key for proper grouping
+                        if sender_name in sender_dict:
+                            sender_dict[sender_name]["total_amount"] += amount_received
+                            sender_dict[sender_name]["count"] += 1
                         else:
-                            sender_dict[sender_phone] = {
+                            sender_dict[sender_name] = {
                                 "name": sender_name,
                                 "total_amount": amount_received,
                                 "count": 1
@@ -256,18 +267,24 @@ def identify_mpesa_soulmates(
                 if " - " in details:
                     receiver_info = details.split(" - ", 1)[1].strip()
                     parts = receiver_info.split(" ", 1)
-                    receiver_phone = parts[0].strip()
-                    receiver_name = parts[1].strip() if len(parts) > 1 else receiver_phone
+                  
+                    if parts[0] and parts[0][0].isdigit():
+                       
+                        receiver_name = parts[1].strip() if len(parts) > 1 else parts[0]
+                    else:
+                       
+                        receiver_name = receiver_info
                     
                     amount_str = tx.withdrawn.replace(",", "").replace("-", "").strip()
                     if amount_str and amount_str != "":
                         amount_sent = float(amount_str)
                         
-                        if receiver_phone in receiver_dict:
-                            receiver_dict[receiver_phone]["total_amount"] += amount_sent
-                            receiver_dict[receiver_phone]["count"] += 1
+                       
+                        if receiver_name in receiver_dict:
+                            receiver_dict[receiver_name]["total_amount"] += amount_sent
+                            receiver_dict[receiver_name]["count"] += 1
                         else:
-                            receiver_dict[receiver_phone] = {
+                            receiver_dict[receiver_name] = {
                                 "name": receiver_name,
                                 "total_amount": amount_sent,
                                 "count": 1
@@ -337,6 +354,12 @@ async def process_statement(
                 Transansaction(**tx) for tx in trans
             ]
         )
+        # calculate trans costs
+        trans_cost = calculate_transaction_costs(
+             transactions=[
+                Transansaction(**tx) for tx in trans
+            ]
+        )
         return {
             "customer_name": result["customer_name"],
             "phone_number": result["phone_number"],
@@ -349,6 +372,7 @@ async def process_statement(
             "day_vs_weekend_spending": day_vs_weekend_spending,
             "weekday_spending": weekday_spending,
             "transactions": result["transactions"],
+            "trans_cost": trans_cost
            
         }
 
