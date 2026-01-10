@@ -19,151 +19,12 @@ export async function fetchStatement(
     });
 
     return response.data;
-    
+
 }
 
 
 
 // interfaces
-/*
-{
-  "customer_name": "James Njoroge Nyambura",
-  "phone_number": "0706076039",
-  "email": "reecejames934@gmail.com",
-  "statement_begin_date": "05 Jan 2026",
-  "statement_end_date": "06 Jan 2026",
-  "summary": {
-    "SEND MONEY:": {
-      "paid_in": "0.00",
-      "paid_out": "280.00"
-    },
-    "RECEIVED MONEY:": {
-      "paid_in": "7,023.00",
-      "paid_out": "0.00"
-    },
-    "AGENT DEPOSIT:": {
-      "paid_in": "0.00",
-      "paid_out": "0.00"
-    },
-    "AGENT WITHDRAWAL:": {
-      "paid_in": "0.00",
-      "paid_out": "0.00"
-    },
-    "LIPA NA M-PESA (PAYBILL):": {
-      "paid_in": "0.00",
-      "paid_out": "6,762.00"
-    },
-    "LIPA NA M-PESA (BUY GOODS):": {
-      "paid_in": "0.00",
-      "paid_out": "240.00"
-    },
-    "OTHERS:": {
-      "paid_in": "210.00",
-      "paid_out": "20.00"
-    },
-    "TOTAL:": {
-      "paid_in": "7,233.00",
-      "paid_out": "7,302.00"
-    }
-  },
-  "soul_mates": {
-    "top_senders": {
-      "2541******494": {
-        "name": "JOSEPH MWANGI",
-        "total_amount": 6400,
-        "count": 3
-      }
-    },
-    "top_receivers": {
-      "2547******261": {
-        "name": "ALEX WAITHERERO",
-        "total_amount": 150,
-        "count": 2
-      }
-    }
-  },
-  "time_of_day_spending": {
-    "morning": {
-      "count": 34,
-      "amount": 6869
-    },
-    "afternoon": {
-      "count": 5,
-      "amount": 190
-    },
-    "evening": {
-      "count": 0,
-      "amount": 0
-    },
-    "night": {
-      "count": 9,
-      "amount": 243
-    }
-  },
-  "day_vs_weekend_spending": {
-    "weekday": {
-      "count": 38,
-      "amount": 7302
-    },
-    "weekend": {
-      "count": 0,
-      "amount": 0
-    }
-  },
-  "weekday_spending": {
-    "Monday": {
-      "count": 25,
-      "amount": 3877
-    },
-    "Tuesday": {
-      "count": 13,
-      "amount": 3425
-    },
-    "Wednesday": {
-      "count": 0,
-      "amount": 0
-    },
-    "Thursday": {
-      "count": 0,
-      "amount": 0
-    },
-    "Friday": {
-      "count": 0,
-      "amount": 0
-    },
-    "Saturday": {
-      "count": 0,
-      "amount": 0
-    },
-    "Sunday": {
-      "count": 0,
-      "amount": 0
-    }
-  },
-  "transactions": [
-    {
-      "receipt_number": "UA6C22YGHI",
-      "completion_time": "2026-01-06 15:13:08",
-      "details": "Merchant Payment to 6552090 - ELIZABETH WANJIRU MACHARIA",
-      "transaction_status": "Completed",
-      "paid_in": "",
-      "withdrawn": "-50.00",
-      "balance": "3.10"
-    },
-    {
-      "receipt_number": "UA6C22YJE0",
-      "completion_time": "2026-01-06 15:05:13",
-      "details": "Customer Transfer to - 07******495 MAGDALENE PETER",
-      "transaction_status": "Completed",
-      "paid_in": "",
-      "withdrawn": "-50.00",
-      "balance": "53.10"
-    }
-  ]
-}
-
-*/
-
 
 interface Transaction {
     receipt_number: string;
@@ -281,4 +142,5 @@ export interface ParsedStatement {
     day_vs_weekend_spending: DayVsWeekdaySpending;
     weekday_spending: WeekdaySpending;
     transactions: Transaction[];
+    trans_cost: number;
 }
