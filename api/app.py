@@ -11,7 +11,8 @@ app = FastAPI()
 origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://mpesa-wrap.vercel.app"
+    "https://mpesa-wrap.vercel.app",
+    "https://wrap.kifaru.dev" 
 ]
 
 app.add_middleware(
