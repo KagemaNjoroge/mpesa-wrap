@@ -5,6 +5,15 @@ M-PESA Wrapped takes your M-PESA statement and turns it into a beautiful story a
 
 ---
 
+
+
+<p align="center">
+  <img src="screenshots/soulmates.png" alt="M-PESA Soulmates" width="45%" />
+  <img src="screenshots/spendingweek.png" alt="Spending Week" width="45%" />
+</p>
+
+---
+
 ## What It Does
 
 Upload your M-PESA statement PDF, and discover:
