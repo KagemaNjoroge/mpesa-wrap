@@ -183,7 +183,7 @@ export function UploadPage({ onUploadComplete }: UploadPageProps) {
                     <span>Analyzing your statement...</span>
                   </>
                 ) : (
-                  <span>Get Your Wrapped ✨</span>
+                  <span>Get Your Wrapped</span>
                 )}
               </button>
             </form>
