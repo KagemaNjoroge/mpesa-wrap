@@ -2,29 +2,57 @@
 
 import { ParsedStatement } from "@/lib/api";
 import { TrendingUp, TrendingDown, Users, Clock, Calendar, Heart, Gift, Sunrise, Sun, Sunset, Moon, Check, Share2, Banknote } from "lucide-react";
+import Image from "next/image";
 
 interface SlideProps {
   data: ParsedStatement;
 }
 
 export function IntroSlide({ data }: SlideProps) {
+  // personalized greeting
+  const firstName = data.customer_name?.split(' ')[0] || 'there';
+  
+  // greeting based on time of day
+  const hour = new Date().getHours();
+  let greeting = "Hello";
+  if (hour < 12) greeting = "Good morning";
+  else if (hour < 17) greeting = "Good afternoon";
+  else greeting = "Good evening";
+
   return (
-    <div className="flex flex-col items-center justify-center h-full text-center space-y-4 sm:space-y-6 p-6 sm:p-8 pt-12 sm:pt-16">
-      <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-green-600 flex items-center justify-center mb-2 sm:mb-4 animate-[ping_1s_ease-in-out_3]">
-        <span className="text-2xl sm:text-4xl font-bold text-white">M</span>
+    <div className="flex flex-col items-center justify-center h-full text-center space-y-3 sm:space-y-5 p-6 sm:p-8 pt-12 sm:pt-16">
+      <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-2 sm:mb-4 animate-[bounce_1s_ease-in-out_3]">
+        <Image
+          src="/mpesa.png"
+          alt="M-PESA Logo"
+          width={96}
+          height={96}
+          className="w-15 h-15 sm:w-20 sm:h-14"
+        />
       </div>
-      <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white animate-fade-in">
+      
+      <div className="space-y-1 animate-fade-in">
+        <p className="text-lg sm:text-2xl text-gray-600 dark:text-gray-400">
+          {greeting}, <span className="font-semibold text-green-600">{firstName}</span>! 👋
+        </p>
+      </div>
+      
+      <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white animate-fade-in animation-delay-200">
         Your M-PESA
       </h1>
-      <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-green-600 animate-fade-in animation-delay-200">
+      <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-green-600 animate-fade-in animation-delay-400">
         Wrapped
       </h2>
-      <p className="text-base sm:text-xl text-gray-600 dark:text-gray-400 max-w-md animate-fade-in animation-delay-400">
-        {data.statement_begin_date} - {data.statement_end_date}
+      
+      <p className="text-sm sm:text-lg text-gray-500 dark:text-gray-400 max-w-md animate-fade-in animation-delay-600">
+        Let's take a look at how your money moved
       </p>
-      <p className="text-sm sm:text-lg text-gray-500 dark:text-gray-500 animate-fade-in animation-delay-600">
-        {data.customer_name}
-      </p>
+      
+      <div className="pt-2 sm:pt-4 space-y-1 animate-fade-in animation-delay-800">
+        <p className="text-xs sm:text-base text-gray-400 dark:text-gray-500">
+          {data.statement_begin_date} — {data.statement_end_date}
+        </p>
+      </div>
     </div>
   );
 }
@@ -225,7 +253,7 @@ export function TransactionCostsSlide({ data }: SlideProps) {
         </div>
         
         <p className="text-base sm:text-xl text-gray-600 dark:text-gray-400 animate-fade-in animation-delay-600">
-          just to move your money around 💸
+          just to move your money around 
         </p>
       </div>
       
