@@ -1,13 +1,13 @@
 # M-PESA Wrapped
 
 **Your M-PESA story, beautifully told.**
-M-PESA Wrapped takes your M-PESA statement and turns it into a beautiful, Spotify Wrapped-style story about your spending habits.
+M-PESA Wrapped takes your M-PESA statement and turns it into a beautiful story about your spending habits.
 
 ---
 
 ## What It Does
 
-Upload your M-PESA statement PDF, and within seconds you'll discover:
+Upload your M-PESA statement PDF, and discover:
 
 - **Your Money Movement** — See how much came in vs went out
 - **Your M-PESA Soulmates** — Find out who you send and receive money from the most
@@ -15,7 +15,7 @@ Upload your M-PESA statement PDF, and within seconds you'll discover:
 - **Your Spending Week** — Which day of the week hits your wallet the hardest?
 - **Weekday vs Weekend** — Do you spend more during the week or on weekends?
 
-All presented in a swipeable, visual story format — just like Spotify Wrapped!
+All presented in a swipeable, visual story format.
 
 ---
 
@@ -29,27 +29,6 @@ All presented in a swipeable, visual story format — just like Spotify Wrapped!
 
 ---
 
-## Your Privacy Matters
-
-**Your data stays yours.**
-
-- Your statement is processed instantly and **never stored** on any server
-- Everything happens in real-time — once you close the page, your data is gone
-- The entire project is open source — you can verify this yourself
-
----
-
-## Built With
-
-| Part | Technology |
-|------|------------|
-| Website | Next.js |
-| Backend | Python (FastAPI) |
-
-
-...but does it matter?? It just works! That's all.
-
----
 
 ## Try It Out
 
@@ -66,7 +45,7 @@ git clone https://github.com/KagemaNjoroge/mpesa-wrap.git
 2. **Run the Backend (API):**
 ```bash
 cd api
-uv sync && source source .venv/bin/activate
+uv sync && source .venv/bin/activate
 fastapi dev app.py
 
 ```
@@ -78,4 +57,4 @@ npm i
 npm run dev
 ```
 3. **Use Docker Altenatively**  
-Docker instructions coming soon
+probably an overkill, sorry
