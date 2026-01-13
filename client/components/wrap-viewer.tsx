@@ -161,7 +161,7 @@ export function WrapViewer({ data }: WrapViewerProps) {
                 
                 {/* only render content for current slide */}
                 {isCurrent && (
-                  <div className="w-full h-full overflow-y-auto">
+                  <div className="w-full h-full overflow-hidden">
                     <SlideComponent data={data} />
                   </div>
                 )}
