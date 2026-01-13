@@ -64,5 +64,4 @@ cd client
 npm i
 npm run dev
 ```
-3. **Use Docker Altenatively**  
-probably an overkill, sorry
+
