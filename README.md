@@ -40,8 +40,7 @@ All presented in a swipeable, visual story format.
 
 
 ## Try It Out
-
-🌐 **Live Demo:** [mpesa-wrap.vercel.app](https://mpesa-wrap.vercel.app)
+[Live demo](https://wrap.kifaru.dev)
 
 ---
 
